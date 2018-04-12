@@ -175,6 +175,15 @@ import javax.servlet.ServletException;
  * @see org.springframework.web.servlet.support.AbstractDispatcherServletInitializer
  * @see org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer
  */
+
+/**
+ * 作用：
+ * 它确保您的实现被检测并自动用于初始化任何Servlet 3的容器，
+ * 可以通过重写onStartup 方法注册初始DispatcherServlet。
+ *
+ * 功能：
+ * 指定servlet映射、指定DispatcherServlet的配置位置
+ */
 public interface WebApplicationInitializer {
 
 	/**
