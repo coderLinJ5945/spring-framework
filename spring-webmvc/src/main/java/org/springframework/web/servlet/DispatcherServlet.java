@@ -61,13 +61,12 @@ import org.springframework.web.util.NestedServletException;
 import org.springframework.web.util.WebUtils;
 
 /**
- * Central dispatcher for HTTP request handlers/controllers, e.g. for web UI controllers
- * or HTTP-based remote service exporters. Dispatches to registered handlers for processing
- * a web request, providing convenient mapping and exception handling facilities.
- *
- * <p>This servlet is very flexible: It can be used with just about any workflow, with the
- * installation of the appropriate adapter classes. It offers the following functionality
- * that distinguishes it from other request-driven web MVC frameworks:
+ *用于HTTP请求处理程序/控制器的中央调度器，例如用于web UI控制器。
+ *或基于http的远程服务出口商。分派到注册处理程序进行处理。
+ *一个web请求，提供方便的映射和异常处理设施
+ * <p>这个servlet非常灵活:它可以与任何工作流一起使用。
+ *安装适当的适配器类。它提供了以下功能。
+ *区别于其他请求驱动的web MVC框架:
  *
  * <ul>
  * <li>It is based around a JavaBeans configuration mechanism.
@@ -157,6 +156,9 @@ import org.springframework.web.util.WebUtils;
 @SuppressWarnings("serial")
 public class DispatcherServlet extends FrameworkServlet {
 
+	/**
+	 * 以下是DispatcherServlet 用于处理请求并作出适当响应的 bean;
+	 */
 	/** Well-known name for the MultipartResolver object in the bean factory for this namespace. */
 	public static final String MULTIPART_RESOLVER_BEAN_NAME = "multipartResolver";
 
