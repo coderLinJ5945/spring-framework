@@ -1,3 +1,5 @@
+# 这是一个用于学习Spring源码的项目，会持续更新翻译其中的内容，并附注学习笔记
+
 ## Spring Framework
 The Spring Framework provides a comprehensive programming and configuration
 model for modern Java-based enterprise applications -- on any kind of deployment
