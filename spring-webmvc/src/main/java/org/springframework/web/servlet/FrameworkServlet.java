@@ -68,6 +68,7 @@ import org.springframework.web.util.WebUtils;
 /**
  * Base servlet for Spring's web framework. Provides integration with
  * a Spring application context, in a JavaBean-based overall solution.
+ * Spring web框架的基础servlet，用于集成
  *
  * <p>This class offers the following functionality:
  * <ul>

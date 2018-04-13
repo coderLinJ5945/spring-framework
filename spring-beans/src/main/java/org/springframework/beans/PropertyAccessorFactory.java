@@ -32,6 +32,7 @@ public abstract class PropertyAccessorFactory {
 	 * @param target the target object to wrap
 	 * @return the property accessor
 	 * @see BeanWrapperImpl
+	 * 获取给定的Object对象的 BeanWrapper
 	 */
 	public static BeanWrapper forBeanPropertyAccess(Object target) {
 		return new BeanWrapperImpl(target);

@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Base Controller interface, representing a component that receives
+ * 请求的接收组件接口。
  * {@code HttpServletRequest} and {@code HttpServletResponse}
  * instances just like a {@code HttpServlet} but is able to
  * participate in an MVC workflow. Controllers are comparable to the

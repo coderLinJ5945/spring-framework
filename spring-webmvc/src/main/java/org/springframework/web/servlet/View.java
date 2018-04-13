@@ -27,6 +27,7 @@ import org.springframework.lang.Nullable;
 /**
  * MVC View for a web interaction. Implementations are responsible for rendering
  * content, and exposing the model. A single view exposes multiple model attributes.
+ * 视图解析器的最大的父类接口
  *
  * <p>This class and the MVC approach associated with it is discussed in Chapter 12 of
  * <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0764543857/">Expert One-On-One J2EE Design and Development</a>
@@ -49,6 +50,7 @@ public interface View {
 	/**
 	 * Name of the {@link HttpServletRequest} attribute that contains the response status code.
 	 * <p>Note: This attribute is not required to be supported by all View implementations.
+	 * 相应状态
 	 */
 	String RESPONSE_STATUS_ATTRIBUTE = View.class.getName() + ".responseStatus";
 

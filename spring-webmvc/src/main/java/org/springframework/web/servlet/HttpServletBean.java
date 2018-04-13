@@ -143,6 +143,8 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 	 * invoke subclass initialization.
 	 * @throws ServletException if bean properties are invalid (or required
 	 * properties are missing), or if subclass initialization fails.
+	 * 初始化操作：
+	 * 将xml文件中的bean映射到servlet的bean属性。
 	 */
 	@Override
 	public final void init() throws ServletException {
@@ -150,14 +152,21 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 			logger.debug("Initializing servlet '" + getServletName() + "'");
 		}
 
-		// Set bean properties from init parameters.
+		// 获取Servlet的配置参数，设置bean的属性
 		PropertyValues pvs = new ServletConfigPropertyValues(getServletConfig(), this.requiredProperties);
 		if (!pvs.isEmpty()) {
 			try {
+				/**
+				 * 使用 Spring 底层的 BeanWrapper 接口构造 DispatcherServlet
+				 */
 				BeanWrapper bw = PropertyAccessorFactory.forBeanPropertyAccess(this);
+
 				ResourceLoader resourceLoader = new ServletContextResourceLoader(getServletContext());
+				//注册属性编辑器？ 属性编辑器是个什么鬼，不明白 todo？
 				bw.registerCustomEditor(Resource.class, new ResourceEditor(resourceLoader, getEnvironment()));
+				//初始化这个HttpServletBean的BeanWrapper   todo?
 				initBeanWrapper(bw);
+				//todo？
 				bw.setPropertyValues(pvs, true);
 			}
 			catch (BeansException ex) {

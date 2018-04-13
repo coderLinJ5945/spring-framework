@@ -26,6 +26,10 @@ import org.springframework.core.io.Resource;
  * resources, for use outside a WebApplicationContext (for example,
  * in an HttpServletBean or GenericFilterBean subclass).
  *
+ * ServletContextResourceLoader作用：
+ * 将xml中的bean配置解析成 ServletContext资源
+ *
+ *
  * <p>Within a WebApplicationContext, resource paths are automatically
  * resolved as ServletContext resources by the context implementation.
  *

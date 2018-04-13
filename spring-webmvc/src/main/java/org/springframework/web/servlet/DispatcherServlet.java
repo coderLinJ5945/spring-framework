@@ -61,7 +61,7 @@ import org.springframework.web.util.NestedServletException;
 import org.springframework.web.util.WebUtils;
 
 /**
- *用于HTTP请求处理程序/控制器的中央调度器，例如用于web UI控制器。
+ *用于HTTP请求处理程序/控制器的中央调度器，例如用于web 前端UI控制器。
  *或基于http的远程服务出口商。分派到注册处理程序进行处理。
  *一个web请求，提供方便的映射和异常处理设施
  * <p>这个servlet非常灵活:它可以与任何工作流一起使用。
@@ -169,8 +169,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	public static final String THEME_RESOLVER_BEAN_NAME = "themeResolver";
 
 	/**
-	 * Well-known name for the HandlerMapping object in the bean factory for this namespace.
-	 * Only used when "detectAllHandlerMappings" is turned off.
+	 * HandlerMapping接口：用于请求和处理 映射（requests and handler objects.）
 	 * @see #setDetectAllHandlerMappings
 	 */
 	public static final String HANDLER_MAPPING_BEAN_NAME = "handlerMapping";
@@ -405,6 +404,11 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * @see #initWebApplicationContext
 	 * @see #configureAndRefreshWebApplicationContext
 	 * @see org.springframework.web.WebApplicationInitializer
+	 *
+	 * 使用 WebApplicationContext来创建 DispatcherServlet实例
+	 * 在Spring MVC中，每个DispatcherServlet都持有一个自己的上下文对象WebApplicationContext，
+	 * 它又继承了根（root）WebApplicationContext对象中已经定义的所有bean。
+	 * 这些继承的bean可以在具体的Servlet实例中被重载，在每个Servlet实例中你也可以定义其scope下的新bean。
 	 */
 	public DispatcherServlet(WebApplicationContext webApplicationContext) {
 		super(webApplicationContext);
@@ -417,6 +421,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * just a single bean with name "handlerMapping" will be expected.
 	 * <p>Default is "true". Turn this off if you want this servlet to use a single
 	 * HandlerMapping, despite multiple HandlerMapping beans being defined in the context.
+	 * 作用：设置是否在servlet上下文中的检测所有的HandlerMapping bean
 	 */
 	public void setDetectAllHandlerMappings(boolean detectAllHandlerMappings) {
 		this.detectAllHandlerMappings = detectAllHandlerMappings;
@@ -576,6 +581,8 @@ public class DispatcherServlet extends FrameworkServlet {
 
 	/**
 	 * Initialize the HandlerMappings used by this class.
+	 * 初始化对应 bean 的handler映射：
+	 * web.xml ---> org.springframework.web.servlet.DispatcherServlet ---> servlet-context.xml --->bean对象
 	 * <p>If no HandlerMapping beans are defined in the BeanFactory for this namespace,
 	 * we default to BeanNameUrlHandlerMapping.
 	 */
